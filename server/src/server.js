@@ -16,6 +16,10 @@ const route1 = require('./routes/route1');
 // Use routes
 app.use('/route1', route1);
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
 app.get('/getAllUsers', async (req, res) => {
   try {
     const connection = await mysqlPool.getConnection();
