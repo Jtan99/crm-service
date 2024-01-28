@@ -1,37 +1,43 @@
-# name: Deploy Server
+name: Deploy Server
 
-# on:
-#   push:
-#     paths:
-#       - 'server/**'
-#     branches:
-#       - main
+on:
+  push:
+    paths:
+      - 'server/**'
+    branches:
+      - main
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
 
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v2
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-#     - name: Setup Node.js
-#       uses: actions/setup-node@v3
-#       with:
-#         node-version: '20'
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
 
-#     - name: Install dependencies
-#       run: npm install
+    - name: Install dependencies
+      run: |
+        cd server
+        npm install
 
-#     - name: Deploy Server to EC2
-#       uses: appleboy/ssh-action@master
-#       with:
-#         host: ${{ secrets.EC2_HOST }}
-#         username: ${{ secrets.EC2_USERNAME }}
-#         key: ${{ secrets.EC2_PRIVATE_KEY }}
-#         port: 22
-#         script: |
-#           cd crm-service/server
-#           git pull origin main
-#           npm install
-#           npm start
+    - name: Deploy Server to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd /home/ubuntu/crm-service/server
+          git pull origin main
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh
+          npm install
+          npm start

@@ -20,6 +20,10 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
+app.get('/test', (req, res) => {
+  res.send('Adding route to test prod deployment');
+});
+
 app.get('/getAllUsers', async (req, res) => {
   try {
     const connection = await mysqlPool.getConnection();
