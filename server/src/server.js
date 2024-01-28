@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/test', (req, res) => {
-  res.send('Adding route to test prod deployment');
+  res.send('made a change, should be reflected in the browser');
 });
 
 app.get('/getAllUsers', async (req, res) => {
