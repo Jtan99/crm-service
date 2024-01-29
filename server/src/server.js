@@ -25,6 +25,7 @@ app.get('/test', (req, res) => {
 });
 
 app.get('/getAllUsers', async (req, res) => {
+  console.log("getAllUsers")
   try {
     const connection = await mysqlPool.getConnection();
     const [rows] = await connection.query('SELECT * FROM users');
