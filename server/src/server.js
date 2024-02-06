@@ -10,11 +10,12 @@ app.use(cors(corsOptions));
 
 // Routes
 const route1 = require('./routes/route1');
-// const route2 = require('./routes/route2');
+const route2 = require('./routes/route2');
 
 
 // Use routes
 app.use('/route1', route1);
+app.use('/route2', route2);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
