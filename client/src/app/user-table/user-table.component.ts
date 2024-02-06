@@ -1,7 +1,7 @@
 // client/src/app/user-table/user-table.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environment/environment'; // Import the environment
+import { environment } from '../../environments/environment'; // Import the environment
 
 @Component({
   selector: 'app-user-table',
