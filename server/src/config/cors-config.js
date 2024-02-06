@@ -1,6 +1,6 @@
 const corsOptions = {
-  origin: 'http://localhost:3000', // Replace with the origin of your Angular app
-  methods: 'GET', // Specify the allowed methods
+  origin: ['http://localhost:3000', 'http://clientsforge.com'],
+  methods: 'GET',
 };
 
 module.exports = corsOptions;
