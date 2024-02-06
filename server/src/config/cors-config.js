@@ -1,5 +1,5 @@
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://clientsforge.com'],
+  origin: ['http://localhost:3000', 'https://clientsforge.com'],
   methods: 'GET',
 };
 
